@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./materialize-css/dist/css/materialize.min.css"
+        media="screen,projection" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <div id="header">
+            <input type="text" class="city-input" name="city" id="city" placeholder="Please enter your city" id="city-holder">
+            <a class="btn-floating btn-large waves-effect waves-light Lavender Blue" onclick="handleSearch()">
+                <i class="material-icons large">search</i>
+            </a>
+        </div>
+        <div id="cities"></div>
+    </div>
+
+    <script id="city-block" type="text/x-handlebars-template">
+        {{#each cities}}
+            <div class="city card">
+                <div class="card-image">
+                    <div class="card-title name">{{name}}</div>
+                    <img src="http://openweathermap.org/img/wn/{{conditionPic}}@2x.png" alt="weather icon">
+                    {{#if saved}}
+                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">remove_circle</i></a>
+                    {{else}}
+                    <a class="btn-floating halfway-fab waves-effect waves-light Menthol"><i class="material-icons">add_circle</i></a>
+                    {{/if}}
+                </div>
+                <div class="card-content">
+                    <div class="temperature">{{temperature}}<span>&#8451;</span></div>
+                    <p class="condition">{{condition}}</p>
+                    <div class="updatedAt">{{updatedAt}}</div>
+                    <a class="btn-floating btn-small waves-effect waves-light grey lighten-1"><i class="material-icons large">refresh</i></a>
+                </div>
+            </div>
+        {{/each}}
+      </script>
+    <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="./jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="./materialize-css/dist/js/materialize.min.js"></script>
+    <script src="weather.js"></script>
+    <script src="renderer.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

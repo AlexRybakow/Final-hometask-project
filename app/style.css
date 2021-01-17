@@ -1,0 +1,89 @@
+#container{
+  max-width:100vw;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  background-color: khaki;
+  grid-gap: 1vh;
+  padding: 2vh;
+  overflow: auto;
+}
+
+#header{
+  padding: 2vh;
+  display: grid;
+  height: 15vh;
+  grid-template-columns: 5fr 1fr;
+  grid-gap: 2vh;
+  /* justify-content: space-around; */
+  justify-items: center;
+  align-items: center ;
+}
+
+#cities{
+  display: grid;
+  grid-gap: 2vh;
+  padding: 2vh;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-content: space-around;
+  height: 150px;
+}
+
+.city-input {
+  color: crimson;
+}
+
+#city-holder {
+  color: crimson;
+}
+
+.city{
+  display: grid;
+  background-color: blue;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  border-radius: 1vh;
+  padding: 1vh;
+}
+
+.card-content i{
+  color: black;
+}
+
+.card .card-title{
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  font-weight: bold;
+  top: 1%;
+}
+
+span {
+  content: "\2103";
+}
+
+@media(max-width: 768px){
+  #cities{grid-template-columns: 1fr}
+  .city{height: 390px;}
+}
+
+.card .card-image img{
+  top: 2vh;
+}
+  
+.condition{
+  font-weight: bold;
+}
+
+.temperature{
+  font-size: 3vh;
+  font-weight: bold;
+  color: grey;
+}
+
+.grey{
+  margin: 2vh;
+}
