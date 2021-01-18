@@ -42,7 +42,7 @@ class Weather{
                 const deletedCity = this.cityData.find(cdata => cdata.name == city)
                     deletedCity.saved = false
                 try{
-                    const deleteCity = await fetch(`/city`,{
+                    const deleteCity = await fetch('/city/:cityName',{
                         method: 'DELETE',
                         headers: {
                             'Content-Type':'application/json'
@@ -59,7 +59,7 @@ class Weather{
         
         try{
             let updateCity;
-            const updatedCity = await fetch(`/city`,{
+            const updatedCity = await fetch('/city/:cityName',{
                 method: 'PUT',
                 headers: {
                     'Content-Type':'application/json'

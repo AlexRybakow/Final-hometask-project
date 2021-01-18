@@ -9,5 +9,5 @@ const citySchema = new Schema({
     updatedAt: Date
 })
 
-const City = mongoose.model("city", citySchema)
-module.exports = City
+const cityModel = mongoose.model("city", citySchema)
+module.exports = cityModel

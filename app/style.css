@@ -1,9 +1,12 @@
+body {
+  background-image: url("../app/clouds.jpg") no-repeat;
+}
+
 #container{
   max-width:100vw;
   width: 100vw;
   display: grid;
   grid-template-rows: 1fr 5fr;
-  background-color: khaki;
   grid-gap: 1vh;
   padding: 2vh;
   overflow: auto;

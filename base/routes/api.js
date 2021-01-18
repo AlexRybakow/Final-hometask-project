@@ -1,7 +1,7 @@
 const express = require("express");
 const cityRouter = express.Router();
 const moment = require("moment");
-const City = require("../models/mongoose");
+const cityModel = require("../models/mongoose");
 const axios = require("axios").default;
 
 cityRouter.get("/city/:cityName", async (req, res) => {
@@ -26,20 +26,20 @@ cityRouter.get("/city/:cityName", async (req, res) => {
 });
 
 cityRouter.get("/cities", (req, res) => {
-  City.find({}, (err, cities) => {
+  cityModel.find({}, (err, cities) => {
     res.send(cities);
   });
 });
 
 cityRouter.post("/city", async (req, res) => {
-  const c1 = new City(req.body);
-  await c1.save();
+  const newCity = new cityModel(req.body);
+  await newCity.save();
   res.send("done");
 });
 
 cityRouter.delete("/city/:cityName", (req, res) => {
   const { cityName } = req.params;
-  City.findOneAndDelete({ name: cityName }, (err, city) => {
+  cityModel.findOneAndDelete({ name: cityName }, (err, city) => {
     res.send(city);
   });
 });
@@ -57,7 +57,7 @@ cityRouter.put('/city/:cityName', async (req, res) =>{
             conditionPic: response.data.weather[0].icon,
             updatedAt: moment().format("llll")
         }
-        const updatedCity = await City.findOneAndUpdate({name : cityName}, cityWeather, {new: true, useFindAndModify: false})
+        const updatedCity = await cityModel.findOneAndUpdate({name : cityName}, cityWeather, {new: true, useFindAndModify: false})
     }catch(error){
         console.log("something went wrong in the update " + error);
     }finally{
