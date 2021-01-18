@@ -1,5 +1,6 @@
 body {
-  background-image: url("../app/clouds.jpg") no-repeat;
+  background-image: url('/img/clouds.jpg') no-repeat;
+  
 }
 
 #container{
