@@ -8,7 +8,7 @@ class Weather{
             if(!moment(c.updatedAt).isAfter(moment().subtract(3, 'hours'))){
                 await this.updateCity(c.name)
             }
-            c.updatedAt = moment(c.updatedAt).format("llll")
+            c.updatedAt = moment(c.updatedAt).format("lll")
             this.cityData.push({...c, saved: true})
         })
     }
@@ -42,7 +42,7 @@ class Weather{
                 const deletedCity = this.cityData.find(cdata => cdata.name == city)
                     deletedCity.saved = false
                 try{
-                    const deleteCity = await fetch('/city/:cityName',{
+                    const deleteCity = await fetch(`/city/${city}`,{
                         method: 'DELETE',
                         headers: {
                             'Content-Type':'application/json'
@@ -58,8 +58,9 @@ class Weather{
     async changeCity(city){
         
         try{
-            let updateCity;
-            const updatedCity = await fetch('/city/:cityName',{
+            let updateCity = this.cityData.findIndex(cdata => cdata.name === updatedCity.name)
+            this.cityData[updateCity]= {...updatedCity, saved: this.cityData[updateCity].saved};
+            const updatedCity = await fetch(`/city/${city}`,{
                 method: 'PUT',
                 headers: {
                     'Content-Type':'application/json'
@@ -67,8 +68,7 @@ class Weather{
                 body: JSON.stringify(updateCity)
             })
             
-            updateCity = this.cityData.findIndex(cdata => cdata.name === updatedCity.name)
-            this.cityData[updateCity]= {...updatedCity, saved: this.cityData[updateCity].saved}
+            
         } catch(error){
             console.log(error);
         }

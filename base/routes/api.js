@@ -10,7 +10,7 @@ cityRouter.get("/city/:cityName", async (req, res) => {
   try {
     let response = await axios.get(url);
     response = response.data
-    const dateString = moment.unix(response.dt).format("llll");
+    const dateString = moment.unix(response.dt).format("lll");
     const cityWeather = {
       name: response.name,
       temperature: response.main.temp,
@@ -55,7 +55,7 @@ cityRouter.put('/city/:cityName', async (req, res) =>{
             temperature: response.data.main.temp,
             condition: response.data.weather[0].main,
             conditionPic: response.data.weather[0].icon,
-            updatedAt: moment().format("llll")
+            updatedAt: moment().format("lll")
         }
         const updatedCity = await cityModel.findOneAndUpdate({name : cityName}, cityWeather, {new: true, useFindAndModify: false})
     }catch(error){
