@@ -56,19 +56,14 @@ class Weather{
             }
     getCityDataArr(){return this.cityData}
     async changeCity(city){
-        
         try{
-            let updateCity = this.cityData.findIndex(cdata => cdata.name === updatedCity.name)
-            this.cityData[updateCity]= {...updatedCity, saved: this.cityData[updateCity].saved};
-            const updatedCity = await fetch(`/city/${city}`,{
+            const updatedCity = await fetch(`/city/${city}`, {
                 method: 'PUT',
-                headers: {
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify(updateCity)
-            })
-            
-            
+                headers: {},
+                body: JSON.stringify({}) 
+              });
+            const index = this.cityData.findIndex(c => c.name === updatedCity.name)
+            this.cityData[index]= {...updatedCity, saved: this.cityData[index].saved}
         } catch(error){
             console.log(error);
         }
