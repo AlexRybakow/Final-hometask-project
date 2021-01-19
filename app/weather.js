@@ -62,8 +62,8 @@ class Weather{
                 headers: {},
                 body: JSON.stringify({}) 
               });
-            const index = this.cityData.findIndex(c => c.name === updatedCity.name)
-            this.cityData[index]= {...updatedCity, saved: this.cityData[index].saved}
+            const update = this.cityData.findIndex(upd => upd.name === updatedCity.name)
+            this.cityData[update]= {...updatedCity, saved: this.cityData[update].saved}
         } catch(error){
             console.log(error);
         }
