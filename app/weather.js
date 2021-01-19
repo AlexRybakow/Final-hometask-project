@@ -5,7 +5,7 @@ class Weather{
     async getDataFromDB(){
         const cities = await $.get('/cities')
         cities.forEach(async c => {
-            if(!moment(c.updatedAt).isAfter(moment().subtract(3, 'hours'))){
+            if(!moment(c.updatedAt).isAfter(moment().subtract(2, 'hours'))){
                 await this.updateCity(c.name)
             }
             c.updatedAt = moment(c.updatedAt).format("lll")
