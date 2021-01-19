@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'app')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
 
-mongoose.connect('mongodb://localhost/weatherDB', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/27017', { useNewUrlParser: true })
 
 app.use('/', api)
 
