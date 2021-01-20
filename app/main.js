@@ -1,14 +1,14 @@
 const weather = new Weather() 
 const renderer = new Render()
 
-const handleSearch  = async function(){
+async function handleSearch() {
     const city = $("#city").val()
     let cities = await weather.getCityData(city)
     cities = weather.getCityDataArr()
     renderer.renderData(cities)
 }
 
-const loadPage = async function(){
+async function loadPage() {
     await weather.getDataFromDB()
     navigator.geolocation.getCurrentPosition(async position => {
         await weather.getCityData(position.coords)
